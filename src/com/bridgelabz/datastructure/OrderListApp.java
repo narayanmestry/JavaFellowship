@@ -18,7 +18,7 @@ package com.bridgelabz.datastructure;
 import java.io.IOException;
 
 import com.bridgelabz.utility.Utility;
-import com.bridgelabz.utility.Utility.OrderLinkedList;
+import com.bridgelabz.utility.OrderLinkedList;
 
 public class OrderListApp {
 	public static void main(String[] args) throws InterruptedException {
@@ -43,7 +43,7 @@ public class OrderListApp {
 			
 			ol.view();
 			lldata = ol.collectFromLinkedList();
-			//Utility.writeToFile(filepath);
+			Utility.writeToFile(filepath,lldata);
 		
 		
 		

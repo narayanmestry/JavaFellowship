@@ -25,7 +25,10 @@ public class Utility {
 	static Scanner sc = new Scanner(System.in);
 	static File file;
 	static FileReader fr;
+	static FileWriter fw;
+
 	static BufferedReader br;
+	static BufferedWriter bw;
 	static int recursion = 0, iteration = 0;
 
 	static int arr[][] = new int[10][100];
@@ -873,215 +876,6 @@ public class Utility {
 		}
 	}
 
-	// UnOrder : Linkedlist :
-	///// Check Both Recursion and Iteration Generate Same Permutaion or not
-	/// Nested class For UnOrderList
-	public static class UnorderLinkedList<E> {
-		private int size;
-		private Node<E> start;
-
-		public UnorderLinkedList() {
-			size = 0;
-			start = null;
-		}
-
-		public int search(E input) {
-			int flag = 0, loc = 0;
-			if (start == null) {
-				return 0;
-			} else {
-				Node<E> t;
-				t = start;
-				loc = 0;
-				flag = 0;
-				while (t != null) {
-					loc++;
-					if (t.getdata().equals(input)) {
-						flag = 1;
-						break;
-					}
-					t = t.getNext();
-				}
-
-			}
-			if (flag == 1) {
-				return loc;
-			} else {
-				return 0;
-			}
-		}
-
-		public void add(E word) {
-			Node<E> n, t;
-			n = new Node<E>();
-			n.setdata(word);
-			n.setNext(start);
-
-			if (start == null) {
-				start = n;
-				;
-			} else {
-				t = start;
-				while (t.getNext() != null) {
-					t = t.getNext();
-				}
-
-				t.setNext(n);
-				n.setNext(null);
-			}
-			size++;
-		}
-		
-		
-		public void viewList() {
-			Node<E> t;
-			t = start;
-			if (start == null) {
-				System.out.println("No any kind of Data here");
-			} else {
-				while (t.getNext() != null) {
-					System.out.print(" " + t.getdata());
-					t = t.getNext();
-
-				}
-
-				System.out.println(" " + t.getdata());
-			}
-		}
-
-		public void delete(int loc) {
-			Node<E> t, t1;
-			t1 = start;
-			t = t1;
-			if (start == null) {
-				System.out.println("List is Empty............");
-			} else if (loc == 1) {
-				start = start.getNext();
-			} else {
-				for (int i = 1; i < loc; i++) {
-					t = t1;
-					t1 = t1.getNext();
-				}
-				t.setNext(t1.getNext());
-			}
-			size--;
-		}
-
-		public String[] collectLinkedListData() {
-			System.out.println("size " + size);
-
-			String str[] = new String[size];
-			Node<E> t;
-			t = start;
-			int index = 0;
-			while (t.getNext() != null) {
-				str[index] = (String) t.getdata();
-				index++;
-				t = t.getNext();
-			}
-			str[index] = (String) t.getdata();
-			index++;
-
-			return str;
-		}
-
-		public int getSize() {
-			// TODO Auto-generated method stub
-			return size;
-		}
-
-		// Read the data from file to LinkedLIst
-		@SuppressWarnings("unchecked")
-		public void fileTOLinkedList() throws IOException {
-			File f = new File("/home/admin2/Narayan Mestry/chetan.txt");
-			FileReader fr;
-			BufferedReader br;
-			E words[] = null;
-			String str;
-			try {
-				fr = new FileReader(f);
-				br = new BufferedReader(fr);
-				while ((str = br.readLine()) != null) {
-					words = (E[]) str.split("[./,/?/ ]");
-
-					for (E word : words) {
-						// Thread.sleep(500);
-						System.out.println(" " + word);
-						add(word);
-					}
-				}
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}
-		// Write the Data to File
-
-		public void LinkedListToFile(String[] list) {
-			File f = new File("/home/admin2/Narayan Mestry/chetan.txt");
-			FileWriter fw;
-			BufferedWriter bw = null;
-			try {
-
-				fw = new FileWriter(f);
-				bw = new BufferedWriter(fw);
-
-				for (int i = 0; i <= getSize() - 1; i++) {
-					bw.write(list[i] + " ");
-				}
-
-				System.out.println("File written Successfully");
-
-			} catch (IOException ioe) {
-				ioe.printStackTrace();
-			} finally {
-				try {
-					if (bw != null)
-						bw.close();
-				} catch (Exception ex) {
-					System.out.println("Error in closing the BufferedWriter" + ex);
-				}
-			}
-		}
-
-		public void addAtMiddle(E data) {
-			Node<E> n ,t,t1 ;
-			n = new Node<>();
-			n.setdata(data);
-			n.setNext(start);
-			t = start;
-			int loc =0, mid;
-			
-			
-			if(start == null)
-			{
-				start = t;
-			}
-			else
-			{
-				while(t.getNext()!=null)
-				{
-					t = t.getNext();
-					loc++;
-				}
-				loc++;
-				t1 = start;
-				t = t1;
-				mid = loc/2;
-				for(int i=0;i<mid;i++)
-				{	t = t1;
-					t1 = t1.getNext();
-				}
-				n.setNext(t1);
-				t.setNext(n);
-			}
-			
-			
-			
-		}
-	}
-
 	// OrderLinkedList :
 	// Nested Class For Order List
 	// Read the File 
@@ -1114,180 +908,7 @@ public class Utility {
 		return num;
 	}
 	// static class orderLinkedList
-	public static class OrderLinkedList<E> {
-		private int size;
-		private Node<E> start;
 	
-		public OrderLinkedList() {
-			size = 0;
-			start = null;
-		}
-		
-		public void insert(E data) {
-
-			Node<E> n,t1,t2;
-			n = new Node<E>();
-			n.setdata(data);
-			n.setNext(start);
-			int i=0,flag=0;
-			
-			t2 = start;
-			t1= t2;
-			if (start == null) {
-				start = n;
-			} else {
-				for(i=0;i<size;i++)
-				{
-					if((int) n.getdata()<(int)start.getdata()||(int)n.getdata()==0)
-					{
-						n.setNext(start);
-						start=n;
-						flag=1;
-						break;
-					}
-					else if((int)n.getdata()<=(int)t2.getdata())
-					{
-						n.setNext(t2);
-						t1.setNext(n);
-						flag=1;
-						break;
-					}	
-					
-					if(t2.getNext()!=null)
-					{
-						   t1=t2;
-						   t2=t2.getNext();	
-					}
-					else
-					{
-						   t1=t2;
-					}					
-				}
-				
-				if(flag==0)
-				{
-					t2.setNext(n);
-					n.setNext(null);
-				}
-			}
-			size++;
-
-		}
-
-		
-		public void view() throws InterruptedException {
-			Node<E> t;
-			t = start;
-			while (t.getNext() != null) {
-				Thread.sleep(200);
-				System.out.print("-->" + t.getdata());
-				t = t.getNext();
-				}
-			System.out.print("-->" + t.getdata());
-			System.out.println();
-			
-			}
-
-		public void search(E input) {
-			Node<E> t ;
-			t = start;
-			int loc = 0, flag = 0;
-			
-			if(start==null)
-			{
-				System.out.println("We cant search");
-			}
-			else
-			{
-				t=start;
-				flag=0;
-				while(t.getNext()!=null)
-				{
-					
-				
-					if(t.getdata()==input)
-					{
-						flag=1;
-						System.out.println("Data is Found in list");
-						t=t.getNext();
-						loc++;
-						break;
-					}
-					
-					t=t.getNext();
-					loc++;
-				}
-				
-				if(t.getdata()==input)
-				{
-					flag=1;
-					loc++;
-				}
-				
-				if(flag==1)
-				{
-					System.out.println("pass location is :"+loc);
-					delete(loc);
-				}
-				else
-				{
-					insert(input);
-				}
-			}
-				
-			
-		}
-
-		private void delete(int loc) {
-			Node<E> t1,t2;
-			t2=start;
-			t1=t2;
-			if(start==null)
-			{
-				System.out.println("We Can not do Delete Operation");
-			}
-			else if(loc==1)
-			{
-				start=start.getNext();
-			}
-			else if(loc==size)
-			{
-				while(t2.getNext()!=null)
-				{
-					t1=t2;
-					t2=t2.getNext();
-				}
-				t1.setNext(null);
-			}
-			else
-			{
-				for(int i=1;i<loc;i++)
-				{
-					t1=t2;
-					t2=t2.getNext();
-				}
-				t1.setNext(t2.getNext());
-			}
-			size--;
-		}
-
-		public String[] collectFromLinkedList() {
-			Node<E> t;
-			t = start;
-			String a[] = null;
-			while (t.getNext() != null) {
-				
-				System.out.print("-->" + t.getdata());
-				t = t.getNext();
-				}
-			System.out.print("-->" + t.getdata());
-			System.out.println();
-			return null;
-		}
-		
-		
-	}
-
 	// Check Paranthes Balance
 	// Nested class for Balance parantheses check
 	public static class Paracheck {
@@ -1806,12 +1427,32 @@ public class Utility {
 
 	}
 
-	public static void writeToFile(String filepath) {
-		
-		
+	public static int[] getPrimeData(int limit) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	
-	
-
+	public static void writeToFile(String filepath, String[] lldata) {
+		file = new File(filepath);
+		try {
+			fw = new FileWriter(file);
+			bw = new BufferedWriter(fw);
+			for(int i=0;i<lldata.length;i++)
+			{
+				bw.write(lldata[i]+" ");
+			}
+			System.out.println("File written Successfully");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				bw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
 }

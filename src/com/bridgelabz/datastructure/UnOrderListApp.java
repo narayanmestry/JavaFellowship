@@ -2,7 +2,7 @@ package com.bridgelabz.datastructure;
 
 import java.io.IOException;
 import com.bridgelabz.utility.Utility;
-import com.bridgelabz.utility.Utility.UnorderLinkedList;
+import com.bridgelabz.utility.UnorderLinkedList;
 
 public class UnOrderListApp {
 
@@ -11,11 +11,11 @@ public class UnOrderListApp {
 		String input;
 	    // Read the Data from the File to linkedlist
 		    ll.fileTOLinkedList();
-		    System.out.println("Enter the Input to insert at middle :");
-			input = Utility.inputString();
-		    ll.addAtMiddle(input);
-		    ll.viewList();
-		  /* 
+//		    System.out.println("Enter the Input to insert at middle :");
+//			input = Utility.inputString();
+//		    ll.addAtMiddle(input);
+//		    ll.viewList();
+		  
 	    // Enter the Data to search
 			System.out.println("Enter the Input to search :");
 			input = Utility.inputString();
@@ -32,7 +32,7 @@ public class UnOrderListApp {
 			
 	    // Write the Data to file :
 			ll.LinkedListToFile(list);
-	   */
+	   
 		    
 		    
 	}

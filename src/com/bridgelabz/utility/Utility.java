@@ -1097,9 +1097,31 @@ public class Utility {
 
 	// Static class Queue with LinkedList for Calender
 	public static int[] getPrimeData(int limit) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		int i,j,count,k=0;
+		int prime[] = new int[limit];
+		for (i = 1; i <= limit; i++) {
+			count = 0;
+			for (j = 1; j <= i; j++) {
+				if ((i % j) == 0) {
+					count++;
+				}
+			}
 
+			if (count == 2) {
+				prime[k] = i;
+				k++;
+			}
+
+		}
+		int a[] = new int[k];
+		for(i=0;i<a.length;i++)
+		{
+			if(prime[i]!=0)
+			{
+				a[i]=prime[i];
+			}
+		}
+		return a;
+	}
 	
 }

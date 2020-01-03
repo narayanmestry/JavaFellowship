@@ -19,7 +19,6 @@ public class AnagramSatckLinked {
 			}
 
 			if (count == 2) {
-				System.out.print(" " + i);
 				prime[k] = i;
 				k++;
 			}

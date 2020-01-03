@@ -1,14 +1,14 @@
 package com.bridgelabz.datastructure;
 
-import com.bridgelabz.utility.Utility.Paracheck;
+import com.bridgelabz.utility.Utility;
 
 public class BalanceParaCheck {
 
 	public static void main(String[] args) {
-		Paracheck pc = new Paracheck();
-		String str = "))(";
+		
+		String str = "(())()";
 		boolean result;
-		result = pc.paraCheckFun(str);
+		result = Utility.paraCheckFun(str);
 
 		if (result) {
 			System.out.println("This is Balance parantheses");

@@ -1,6 +1,6 @@
 package com.bridgelabz.utility;
-import com.bridgelabz.utility.Utility.QueLinkedList;
-import com.bridgelabz.utility.Utility.StackLinkedList;
+import com.bridgelabz.utility.QueLinkedList;
+import com.bridgelabz.utility.StackLinkedList;
 
 public class Week {
 	public QueLinkedList<Weekday> ql = new QueLinkedList<Weekday>();

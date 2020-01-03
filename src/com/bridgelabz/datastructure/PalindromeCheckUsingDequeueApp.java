@@ -1,6 +1,6 @@
 package com.bridgelabz.datastructure;
 
-import com.bridgelabz.utility.Utility.DequeueLogic;
+import com.bridgelabz.utility.DequeueLogic;
 
 public class PalindromeCheckUsingDequeueApp {
 
@@ -14,8 +14,7 @@ public class PalindromeCheckUsingDequeueApp {
 		for (char c : s) {
 			dl.addRear(c); // Add the Each Character of String into Dequeue by coverting into character
 		}
-
-		Thread.sleep(300);
+		
 		dl.show();
 
 		boolean result = dl.palindromchecker(); // if String palindrom it return true.

@@ -876,285 +876,92 @@ public class Utility {
 		}
 	}
 
-	// OrderLinkedList :
-	// Nested Class For Order List
-	// Read the File 
+	// Read the File
 	public static String[] getDataFromFile(String filepath) throws IOException {
 		file = new File(filepath);
-		String str ;
-		String data[]  = null;
+		String str;
+		String data[] = null;
 		try {
 			fr = new FileReader(file);
 			br = new BufferedReader(fr);
-			while((str=br.readLine())!=null)
-			{
+			while ((str = br.readLine()) != null) {
 				data = str.split(" ");
-			}			
+			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 
 		return data;
 	}
+
+	// To write into File
+	public static void writeToFile(String filepath, String[] lldata) {
+		file = new File(filepath);
+		try {
+			fw = new FileWriter(file);
+			bw = new BufferedWriter(fw);
+			for (int i = 0; i < lldata.length; i++) {
+				bw.write(lldata[i] + " ");
+			}
+			System.out.println("File written Successfully");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				bw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+	
 	// Convert the String Array into Integer
 	public static Integer[] convertToInteger(String[] data) {
-		Integer num[] = new Integer[data.length] ;
-		for(int i = 0; i<data.length;i++)
-		{
-			//num[i] = Integer.parseInt(data[i]);
+		Integer num[] = new Integer[data.length];
+		for (int i = 0; i < data.length; i++) {
+			// num[i] = Integer.parseInt(data[i]);
 			num[i] = Integer.valueOf(data[i]);
-			//System.out.println(num[i]+"@ "+data[i]);
+			// System.out.println(num[i]+"@ "+data[i]);
 		}
 		return num;
 	}
-	// static class orderLinkedList
-	
+
 	// Check Paranthes Balance
-	// Nested class for Balance parantheses check
-	public static class Paracheck {
+	public static boolean paraCheckFun(String str) {
+		Stack st = new Stack();
+		char exp[] = new char[100];
+		int flag = 0;
 
-		public boolean paraCheckFun(String str) {
-			Stack st = new Stack();
-			char exp[] = new char[100];
-			int flag = 0;
+		exp = str.toCharArray();
 
-			exp = str.toCharArray();
-
-			if (exp[0] == '}' || exp[0] == ']' || exp[0] == ')') { // check starting of expression IF we got
-				return false; // open paranthes then Not balance
-			} else {
-				for (char c : exp) {
-					if (c == '{' || c == '[' || c == '(') {
-						st.push(c); // if open paranthese them push on stack
-					} else if (c == '}' || c == ']' || c == ')') {
-						/*
-						 * IF we got close paranthes we does not pop direct becoz the open paranthese
-						 * might be any type so we have to check that top element of the stack if it
-						 * corresponding to given close paranthese then we have to do POP() operation...
-						 */
-						boolean pair = pairCheck(st.peek(), c);
-						if (st.isEmpty()) {
-							flag = 1;
-							break;
-						} else if (pair) {
-							st.pop();
-						} else {
-							st.push(c);
-						}
-					}
-				}
-
-				if (flag == 0 && st.isEmpty()) {
-					return true;
-				} else {
-					return false;
-				}
-
-			}
-
-		}
-
-		public boolean pairCheck(char open, char close) {
-			if (open == '{' && close == '}') {
-				return true;
-			} else if (open == '[' && close == ']') {
-				return true;
-			} else if (open == '(' && close == ')') {
-				return true;
-			} else {
-				return false;
-
-			}
-
-		}
-
-	}
-
-	// BAnkCash Counter Queue Logic
-	// Nested classs for Queue
-	public static class QueueLogic {
-		public QNode front, rear;
-		public int size = 0;
-		static int bankamount = 500;
-
-		public QueueLogic() {
-			front = null;
-			rear = null;
-			size = 0;
-		}
-
-		public int deposit() {
-
-			int amount;
-			System.out.println("Enter the Ammount :");
-			amount = sc.nextInt();
-			if (amount > 500) {
-				bankamount = bankamount + amount;
-			} else {
-				System.out.println("Please Enter the Amount >= 500");
-				deposit();
-			}
-			return bankamount;
-		}
-
-		public int widtdraw() {
-			int amount;
-			System.out.println("Enter the Ammount :");
-			amount = sc.nextInt();
-			if (amount < bankamount) {
-				bankamount = bankamount - amount;
-			} else {
-				System.out.println("Please enter the amount < " + bankamount);
-				widtdraw();
-			}
-			return amount;
-		}
-
-		public void enQueue(int no, String name) {
-			QNode n = new QNode();
-			n.setNo(no);
-			n.setName(name);
-			n.setNext(rear);
-
-			if (front == null) {
-				front = n;
-				rear = n;
-				n.setNext(rear);
-			} else {
-				rear.setNext(n);
-				rear = n;
-				rear.setNext(null);
-			}
-
-			size++;
-			System.out.println("user " + rear.getNo() + " :" + rear.getName() + " has added.......please next!!!! ");
-		}
-
-		public void dequeue() {
-			if (front == null) {
-				System.out.println("Queue is Empty");
-			} else {
-				QNode t;
-				t = front;
-				System.out.println("Enter the user " + t.getNo() + " choice :");
-				System.out.println("1. Deposit :");
-				System.out.println("2. Widthrow : ");
-				int ch = sc.nextInt();
-				switch (ch) {
-				case 1:
-					deposit();
-					front = front.getNext();
-					System.out.println("please next!!!! ");
-					size--;
-					System.out.println("Amount is : " + bankamount);
-					break;
-				case 2:
-					if (widtdraw() > 0) {
-						front = front.getNext();
-						size--;
-						System.out.println("Amount is : " + bankamount);
-						System.out.println("please next!!!! ");
+		if (exp[0] == '}' || exp[0] == ']' || exp[0] == ')') { // check starting of expression IF we got
+			return false; // open paranthes then Not balance
+		} else {
+			for (char c : exp) {
+				if (c == '{' || c == '[' || c == '(') {
+					st.push(c); // if open paranthese them push on stack
+				} else if (c == '}' || c == ']' || c == ')') {
+					/*
+					 * IF we got close paranthes we does not pop direct becoz the open paranthese
+					 * might be any type so we have to check that top element of the stack if it
+					 * corresponding to given close paranthese then we have to do POP() operation...
+					 */
+					boolean pair = pairCheck(st.peek(), c);
+					if (st.isEmpty()) {
+						flag = 1;
+						break;
+					} else if (pair) {
+						st.pop();
 					} else {
-						System.out.println("Not Have enough cash..Please Deposit First....!!!!!!:");
+						st.push(c);
 					}
-					break;
-				default:
-					System.out.println("Enter valid  choice :");
 				}
 			}
 
-		}
-
-		public int getSize() {
-			return size;
-
-		}
-
-		public void show() {
-			QNode t;
-			t = front;
-			if (front == null) {
-				System.out.println("Queue is Empty");
-			} else {
-				System.out.println("Next User is : " + front.getName());
-
-				System.out.println("User List .................");
-
-				while (t != rear) {
-					System.out.println(" User " + t.getNo() + " : " + t.getName());
-					t = t.getNext();
-				}
-				System.out.println(" User " + t.getNo() + " : " + t.getName());
-			}
-		}
-
-	}
-
-	// DeQueue logic for Palindrome Checker
-	// Nested class For Deque
-	public static class DequeueLogic<E> {
-		public static int size = 0;
-		public Node<E> front, rear;
-
-		public void show() throws InterruptedException {
-			Node<E> t;
-			t = front;
-			while (t.getNext() != null) {
-				Thread.sleep(600);
-				System.out.print(" " + t.getdata());
-				t = t.getNext();
-			}
-			Thread.sleep(600);
-			System.out.println(" " + t.getdata());
-
-		}
-
-		public void addRear(E c) {
-			Node<E> n = new Node<E>();
-			n.setdata(c);
-			n.setNext(null);
-			if (front == null) {
-				front = n;
-				rear = n;
-				rear.setNext(null);
-			} else {
-				rear.setNext(n);
-				rear = n;
-				rear.setNext(null);
-			}
-			size++;
-
-		}
-
-		public boolean palindromchecker() {
-			Node<E> t1, t2;
-			t1 = front;
-			t2 = front;
-			int i, j, k, flag = 0;
-
-			// Iterate i and j for moving t1 forword and t2 backword
-			for (i = 1, j = size; i < j; i++, j--) {
-				for (k = 1; k < j; k++) {
-					t2 = t2.getNext();
-				}
-
-				// After reaching t2 at j'th POsition it conpeare t1 and t2 data ,
-				// its like , it compare frist and last character if same the flag set 1
-				// otherwise it break , means String is nOt Palindrom.
-
-				if (t1.getdata() == t2.getdata()) {
-					flag = 1;
-				} else {
-					flag = 0;
-					break;
-				}
-				t1 = t1.getNext();
-				t2 = front;
-			}
-
-			System.out.println("flag == :" + flag);
-
-			if (flag == 1) {
+			if (flag == 0 && st.isEmpty()) {
 				return true;
 			} else {
 				return false;
@@ -1164,74 +971,19 @@ public class Utility {
 
 	}
 
-	// Prime and anagram using Stack with LinkedList
-	// Nested Class using Stack linkedList # this class also Used for Calendar using
-	// Stack using linkedlist -
-	public static class StackLinkedList<E> {
-		public static int size;
-		private Node<E> top;
-		private Weekday wd;
-
-		public StackLinkedList() {
-			size = 0;
-			top = null;
-		}
-
-		public void push(E data) {
-			// TODO Auto-generated method stub
-			Node<E> n = new Node<E>();
-			n.setdata(data);
-			n.setNext(top);
-
-			if (top == null) {
-				top = n;
-			} else {
-				n.setNext(top);
-				top = n;
-
-			}
-			size++;
-		}
-
-		public void show() {
-			Node<E> t;
-			t = top;
-			while (t != null) {
-				System.out.print(t.getdata() + "==>");
-				t = t.getNext();
-			}
+	//  check pair 
+	public static boolean pairCheck(char open, char close) {
+		if (open == '{' && close == '}') {
+			return true;
+		} else if (open == '[' && close == ']') {
+			return true;
+		} else if (open == '(' && close == ')') {
+			return true;
+		} else {
+			return false;
 
 		}
 
-		public int getSize() {
-			// TODO Auto-generated method stub
-			return size;
-		}
-
-		public void showReverse() {
-			Node<E> t;
-			t = top;
-			int i, j;
-			for (i = size; i > 0; i--) {
-				for (j = 1; j < i; j++) {
-					t = t.getNext();
-				}
-				System.out.print(t.getdata() + "==>");
-				t = top;
-			}
-		}
-
-		public Weekday pop() {
-			if (top != null) {
-				wd = (Weekday) top.getdata();
-				top = top.getNext();
-				size--;
-				return wd;
-			} else {
-				return null;
-			}
-
-		}
 	}
 
 	// Reverse the Array
@@ -1246,6 +998,7 @@ public class Utility {
 		return rev;
 	}
 
+	// Check Anapram AND Prime
 	public static boolean isAnagramPrime(int n, int[] prime) {
 		int rev = reverser(n);
 		int flag = 0;
@@ -1270,6 +1023,7 @@ public class Utility {
 
 	}
 
+	// To reverse the Number
 	private static int reverser(int num) {
 		int rem, rev = 0;
 		while (num > 0) {
@@ -1280,49 +1034,7 @@ public class Utility {
 		return rev;
 	}
 
-	// Nested class using Queue Linkedlist
-	public static class QueueLinkedList<E> {
-		private int size;
-		private Node<E> front, rear;
-
-		public QueueLinkedList() {
-			size = 0;
-			front = rear = null;
-		}
-
-		public int getSize() {
-			return size;
-		}
-
-		public void addToRear(E data) {
-			Node<E> n = new Node<E>();
-			n.setdata(data);
-			n.setNext(rear);
-
-			if (front == null) {
-				front = n;
-				rear = n;
-				rear.setNext(null);
-			} else {
-				rear.setNext(n);
-				rear = n;
-			}
-			size++;
-		}
-
-		public void show() {
-			Node<E> t;
-			t = front;
-			while (t != rear) {
-				System.out.print(t.getdata() + "--->");
-				t = t.getNext();
-			}
-		}
-
-	}
-
 	// ******************** Calender Programs ***************//
-
 	// To get Day number 0 - 6
 	public static int getDayNumber(int d, int m, int y) {
 		int year, month, day, x;
@@ -1384,75 +1096,10 @@ public class Utility {
 	}
 
 	// Static class Queue with LinkedList for Calender
-	public static class QueLinkedList<E> {
-		public E weekday;
-		public Node<E> start;
-		int c = 0;
-		Weekday wd = null;
-
-		public QueLinkedList() {
-			weekday = null;
-			start = null;
-
-		}
-
-		public void add(E wd) {
-			Node<E> n = new Node<E>();
-
-			n.setdata(wd);
-			n.setNext(start);
-
-			if (start == null) {
-				start = n;
-			} else {
-				Node<E> t;
-				t = start;
-				while (t.getNext() != null) {
-					t = t.getNext();
-				}
-				t.setNext(n);
-				n.setNext(null);
-			}
-		}
-
-		public Weekday remove() {
-			if (start != null) {
-				wd = (Weekday) start.getdata();
-				start = start.getNext();
-				return wd;
-			} else {
-				return null;
-			}
-		}
-
-	}
-
 	public static int[] getPrimeData(int limit) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public static void writeToFile(String filepath, String[] lldata) {
-		file = new File(filepath);
-		try {
-			fw = new FileWriter(file);
-			bw = new BufferedWriter(fw);
-			for(int i=0;i<lldata.length;i++)
-			{
-				bw.write(lldata[i]+" ");
-			}
-			System.out.println("File written Successfully");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			try {
-				bw.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-	}
+	
 }

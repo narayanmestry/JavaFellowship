@@ -1,7 +1,7 @@
 package com.bridgelabz.datastructure;
 
 import com.bridgelabz.utility.Utility;
-import com.bridgelabz.utility.Utility.QueueLogic;
+import com.bridgelabz.utility.QueueLogic;
 
 public class BankCashCounterApp {
 

@@ -44,14 +44,23 @@ public class StackLinkedList<E> {
 	public void showReverse() {
 		Node<E> t;
 		t = top;
+		int count=0;
 		int i, j;
 		for (i = size; i > 0; i--) {
 			for (j = 1; j < i; j++) {
 				t = t.getNext();
 			}
-			System.out.print(t.getdata() + "==>");
-			t = top;
+				System.out.print(t.getdata() + ":");
+				t = top;
+				count++;
+				if(count>=2)
+				{
+					System.out.println();
+					count = 0;
+				}
+			
 		}
+		
 	}
 
 	public Weekday pop() {

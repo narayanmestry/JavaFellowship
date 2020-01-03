@@ -3,15 +3,17 @@ package com.bridgelabz.datastructure;
 import com.bridgelabz.utility.OrderLinkedList;
 
 public class Hashing {
-	OrderLinkedList[] main = new OrderLinkedList[11];
+	
+	static OrderLinkedList[] main = new OrderLinkedList[11];
 
-	public Hashing() throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
+		Hashing hs = new Hashing();
 		int numArr[] = { 12, 33, 44, 54, 23, 65, 45, 75, 23, 65, 44 };
 		int i, rem;
 		for (i = 0; i < numArr.length; i++) {
 			rem = numArr[i] % 11;
 			if (main[rem] == null) {
-				main[rem] = new OrderLinkedList();
+				main[rem] = new OrderLinkedList<Integer>();
 				main[rem].insert(numArr[i]);
 			} else {
 				main[rem].insert(numArr[i]);
@@ -26,9 +28,6 @@ public class Hashing {
 				main[i].view();
 			}
 		}
-	}
-	public static void main(String[] args) throws InterruptedException {
-		Hashing hs = new Hashing();
 	}
 
 }

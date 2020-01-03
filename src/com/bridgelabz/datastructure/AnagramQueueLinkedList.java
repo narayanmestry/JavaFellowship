@@ -7,7 +7,7 @@ public class AnagramQueueLinkedList {
 
 	public static void main(String[] args) {
 		QueueLinkedList<Integer> ql = new QueueLinkedList<Integer>();
-		int i, k = 0, limit = 1000,rev = 0;
+		int i, limit = 1000,rev = 0;
 		int prime[] = Utility.getPrimeData(limit);
 		System.out.println("Prime Number :");
 		for (i = 0; i < prime.length; i++) {

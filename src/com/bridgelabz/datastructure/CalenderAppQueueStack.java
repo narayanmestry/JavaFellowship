@@ -8,14 +8,17 @@ public class CalenderAppQueueStack {
 	public static void main(String[] args)  {
 		Week w = new Week();
 		Weekday wd;
-		int date = 1, month, year, i, j;
+		int date = 1, month, year, i, j,totalCell,weekNo;
 		String days[] = { "SUN", "MON", "TUES", "WENS", "THUS", "FRI", "SAT" };
-		// Enter the Month
-		System.out.println("Enter the Month :");
+		
+		System.out.println("Enter the Month :");			// Enter the Month
 		month = Utility.inputNumber();
-		// Enter the Year
-		System.out.println("Enter the Year :");
+	
+		System.out.println("Enter the Year :");				// Enter the Year
 		year = Utility.inputNumber();
+
+		System.out.println("Enter the Week no. 1 to 5 :");		// Enter the Week
+		weekNo = Utility.inputNumber();
 
 		// pass the month , year and by default date =1
 		int dayNo = Utility.getDayNumber(date, month, year);
@@ -30,10 +33,10 @@ public class CalenderAppQueueStack {
 		}
 		System.out.println();
 		System.out.println("\t-----------------------------------------------------");
-		
-		for(i=0;i<(monthData.length+dayNo);i++)
+		totalCell = monthData.length+dayNo;
+		for(i=0;i<totalCell;i++)
 		{
-			if(i<31)
+			if(i<monthData.length)
 			{
 				wd = new Weekday(" ",monthData[i]);		// Wrap the day and date in Object
 				w.sl.push(wd);							// push to Stack as Object
@@ -47,12 +50,12 @@ public class CalenderAppQueueStack {
 		
 		// pop the object , open this object and display it 
 		
-		for(i=0;i<5;i++)
+		for(i=1;i<=5;i++)
 		{
 			for(j=0;j<7;j++)
 			{
 				wd = w.sl.pop();
-				if(wd!=null)
+				if(wd!=null&&i==weekNo)
 				{
 					System.out.print("\t" + wd.date);
 				}

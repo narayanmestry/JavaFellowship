@@ -8,23 +8,25 @@ package com.bridgelabz.functional;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import com.bridgelabz.utility.Utility;
+
 public class TwoDayMatrix {
 	public static void main(String[] args) {
 		PrintWriter writer = new PrintWriter(System.out); 
 		Scanner sc = new Scanner(System.in);
-		int a[][] = new int[10][10];
+		String a[][] = new String[10][10];
 		int i, j, row, col;
 		System.out.println("Enter then number of Row : ");
-		row = sc.nextInt();
+		row = Utility.inputNumber();
 		System.out.println("Enter then number of Column : ");
-		col = sc.nextInt();
+		col = Utility.inputNumber();
 		System.out.println("Enter the "+(row*col)+"Array Element : ");
 		//Read the Input Element From User in Matrix
 		for(i=0;i<row;i++)
 		{
 			for(j=0;j<col;j++)
 			{
-				a[i][j] = sc.nextInt();
+				a[i][j] = sc.next();
 			}
 		}
 		// Display the matrix Using PrintWriter class
@@ -33,7 +35,7 @@ public class TwoDayMatrix {
 			for(j=0;j<col;j++)
 			{
 				//(a[i][j]+"  ");
-				writer.write(a[i][j]+" ");
+				writer.write(a[i][j]+"\t");
 			}
 			writer.write("\n");
 		}

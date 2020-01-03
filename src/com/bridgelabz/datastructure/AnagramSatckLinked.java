@@ -7,7 +7,7 @@ public class AnagramSatckLinked {
 
 	public static void main(String[] args) {
 		StackLinkedList<Integer> sl = new StackLinkedList<Integer>();
-		int i, j, k = 0, limit = 1000, count = 0;
+		int i, limit = 1000;
 		int prime[] = Utility.getPrimeData(limit);
 
 		System.out.println("\nPrime and Anagramin Array :");

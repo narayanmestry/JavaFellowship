@@ -65,7 +65,7 @@ public class OrderLinkedList<E> {
 		Node<E> t;
 		t = start;
 		while (t.getNext() != null) {
-			Thread.sleep(200);
+			
 			System.out.print("-->" + t.getdata());
 			t = t.getNext();
 			}

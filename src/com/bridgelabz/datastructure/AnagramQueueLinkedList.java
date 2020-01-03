@@ -20,7 +20,6 @@ public class AnagramQueueLinkedList {
 			}
 
 		}
-
 		System.out.println("\n__________________________________________________________");
 		System.out.println("\nPrime and Anagram in Array Using Queue With :LinkedList:");
 

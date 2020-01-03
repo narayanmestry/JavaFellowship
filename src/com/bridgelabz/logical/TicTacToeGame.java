@@ -24,11 +24,11 @@ public class TicTacToeGame {
 		int i,index = 0,winner=0,flag=0,count=0;
 		char sign;
 		String player = null;
-		char input[]=new char[9];
+		final char input[]=new char[9];
 		Random r = new Random();
 		for(i=0;i<9;i++)
 		{
-			input[i]=' ';
+			input[i] = ' ';
 		}
 		try {
 		while(winner!=1)
@@ -104,7 +104,29 @@ public class TicTacToeGame {
 							}
 						}
 						
+
+						// to check vertically
+
 						
+						for(i=0;i<3;i++)
+						{
+							flag=0;
+							for(int k=i;k<=i+6;k=k+3)
+							{
+								if(input[k]==sign)
+								{
+									flag++;
+								}
+								if(flag==3)
+								{
+									winner=1;
+									win(input);
+									break;
+								}
+								
+							}
+							
+						}
 						// to check simulteniously
 						if((input[0]==sign&&input[4]==sign&&input[8]==sign)||(input[2]==sign&&input[4]==sign&&input[6]==sign))
 						{

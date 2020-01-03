@@ -297,6 +297,8 @@ public class Utility {
 
 	}
 
+	// To check Valid index or not
+
 	// To calculate Chenge
 	public static void calculateChenge(int money, int[] note) {
 		int index = 0, totalnotes;
@@ -335,6 +337,8 @@ public class Utility {
 		return (f_Temp - 32) * 5 / 9;
 	}
 
+	
+	
 	// Ta Calculate the monthly Payment
 	public static double paymentCalculator(int year, int principleAmount, float percent) {
 		float n, r;
@@ -917,7 +921,7 @@ public class Utility {
 		}
 
 	}
-	
+
 	// Convert the String Array into Integer
 	public static Integer[] convertToInteger(String[] data) {
 		Integer num[] = new Integer[data.length];
@@ -971,7 +975,7 @@ public class Utility {
 
 	}
 
-	//  check pair 
+	// check pair
 	public static boolean pairCheck(char open, char close) {
 		if (open == '{' && close == '}') {
 			return true;
@@ -1097,7 +1101,7 @@ public class Utility {
 
 	// Static class Queue with LinkedList for Calender
 	public static int[] getPrimeData(int limit) {
-		int i,j,count,k=0;
+		int i, j, count, k = 0;
 		int prime[] = new int[limit];
 		for (i = 1; i <= limit; i++) {
 			count = 0;
@@ -1114,14 +1118,14 @@ public class Utility {
 
 		}
 		int a[] = new int[k];
-		for(i=0;i<a.length;i++)
-		{
-			if(prime[i]!=0)
-			{
-				a[i]=prime[i];
+		for (i = 0; i < a.length; i++) {
+			if (prime[i] != 0) {
+				a[i] = prime[i];
 			}
 		}
 		return a;
 	}
+
 	
+
 }

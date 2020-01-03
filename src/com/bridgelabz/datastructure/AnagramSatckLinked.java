@@ -1,7 +1,7 @@
 package com.bridgelabz.datastructure;
 
 import com.bridgelabz.utility.Utility;
-import com.bridgelabz.utility.Utility.StackLinkedList;
+import com.bridgelabz.utility.StackLinkedList;
 
 public class AnagramSatckLinked {
 

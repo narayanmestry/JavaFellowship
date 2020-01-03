@@ -1,7 +1,7 @@
 package com.bridgelabz.datastructure;
 
 import com.bridgelabz.utility.Utility;
-import com.bridgelabz.utility.Utility.QueueLinkedList;
+import com.bridgelabz.utility.QueueLinkedList;
 
 public class AnagramQueueLinkedList {
 

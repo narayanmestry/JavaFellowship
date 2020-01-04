@@ -297,8 +297,87 @@ public class Utility {
 
 	}
 
-	// To check Valid index or not
+	public static void win(char[] input) {
+		System.out.flush();
+		System.out.println("Final Output ..............");
+		System.out.println(input[0] + " | " + input[1] + " | " + input[2]);
+		System.out.println("- | - | -");
+		System.out.println(input[3] + " | " + input[4] + " | " + input[5]);
+// display the boinputrd.......
+		System.out.println("- | - | -");
+		System.out.println(input[6] + " | " + input[7] + " | " + input[8]);
+		System.out.println("___________________________________________________");
+	}
 
+	// To Display the Board
+	public static void displayBoard(char[] input) {
+		System.out.println(input[0] + " | " + input[1] + " | " + input[2]);
+		System.out.println("- | - | -");
+		System.out.println(input[3] + " | " + input[4] + " | " + input[5]);
+
+		System.out.println("- | - | -");
+		System.out.println(input[6] + " | " + input[7] + " | " + input[8]);
+		System.out.println("*********************************************************");
+	}
+
+	// To Check Horozontally
+	public static boolean checkHorizontal(char[] input, char sign) {
+		int i, flag = 0, win = 0;
+		for (i = 0; i < 9; i++) {
+			if (i % 3 == 0) {
+				flag = 0;
+			}
+			if (input[i] == sign) {
+				flag++;
+			}
+			if (flag == 3) {
+				// winner = 1;
+				// Utility.win(input);
+				win = 1;
+				break;
+			}
+		}
+
+		if (win == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	// TO check Vertically
+	public static boolean checkVertical(char[] input, char sign) {
+		int i, flag = 0, k, win = 0;
+		for (i = 0; i < 3; i++) {
+			flag = 0;
+			for (k = i; k <= i + 6; k = k + 3) {
+				if (input[k] == sign) {
+					flag++;
+				}
+				if (flag == 3) {
+					win = 1;
+					break;
+				}
+			}
+		}
+
+		if (win == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	// TO check Simulteniously
+	public static boolean checksimultenious(char[] input, char sign) {
+		if ((input[0] == sign && input[4] == sign && input[8] == sign)
+				|| (input[2] == sign && input[4] == sign && input[6] == sign)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	// To calculate Chenge
 	public static void calculateChenge(int money, int[] note) {
 		int index = 0, totalnotes;
@@ -337,8 +416,6 @@ public class Utility {
 		return (f_Temp - 32) * 5 / 9;
 	}
 
-	
-	
 	// Ta Calculate the monthly Payment
 	public static double paymentCalculator(int year, int principleAmount, float percent) {
 		float n, r;
@@ -1127,5 +1204,4 @@ public class Utility {
 	}
 
 	
-
 }

@@ -89,12 +89,10 @@ public class OrderLinkedList<E> {
 			flag=0;
 			while(t.getNext()!=null)
 			{
-				
-			
 				if(t.getdata()==input)
 				{
 					flag=1;
-					System.out.println("Data is Found in list");
+//					System.out.println("Data is Found in list");
 					t=t.getNext();
 					loc++;
 					break;
@@ -112,7 +110,7 @@ public class OrderLinkedList<E> {
 			
 			if(flag==1)
 			{
-				System.out.println("pass location is :"+loc);
+//				System.out.println("pass location is :"+loc);
 				delete(loc);
 			}
 			else

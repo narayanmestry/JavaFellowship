@@ -1,14 +1,13 @@
 package com.bridgelabz.logical;
 
-import java.io.*;
 import java.util.*;
 
 import com.bridgelabz.utility.Utility;
 
 public class TicTakToeGame {
 	public static void main(String[] args) {
-		int player = 0, count = 0, winner = 0, index=0, flag = 0, number,check = 1;
-		int i, j, k;
+		int player = 0, count = 0, winner = 0, index=0, check = 1;
+		int i;
 		char sign;
 		String name;
 		char input[] = new char[9];
@@ -22,7 +21,6 @@ public class TicTakToeGame {
 		name = Utility.inputString();
 
 		while (winner != 1) {
-			flag = 0;
 			System.out.flush();
 
 			// display the boinputrd.......

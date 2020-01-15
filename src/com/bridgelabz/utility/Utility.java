@@ -42,9 +42,15 @@ public class Utility {
 
 	// Used to input the String:
 	public static String inputString() {
-		/// Scanner sc = new Scanner(System.in);
-		String str = sc.next();
-		// sc.close();
+		String str = null;
+		try {
+			str = sc.next();
+			return str;
+		} catch (Exception e) {
+			System.out.println("Enter the Only String :");
+			sc.next();
+			str = sc.next();
+		}
 		return str;
 	}
 
@@ -57,25 +63,59 @@ public class Utility {
 
 	// Used to input the Integer:
 	public static int inputNumber() {
-		int number = sc.nextInt();
+		int number = 0;
+		try {
+			number = sc.nextInt();
+			return number;
+		} catch (Exception e) {
+			System.out.println("Enter the Only Integer");
+			sc.next();
+			number = inputNumber();
+		}
 		return number;
+
 	}
 
 	// Used to Input the Float or Read the Float Value
 	public static float inputFloat() {
-		float f = sc.nextFloat();
+		float f = 0;
+		try {
+			f = sc.nextFloat();
+			return f;
+		} catch (Exception e) {
+			System.out.println("Enter the Only Float value .......");
+			sc.next();
+			f = sc.nextFloat();
+		}
 		return f;
 	}
 
 	// to Read the Doble input:
 	public static double inputDouble() {
-		double number = sc.nextDouble();
+		double number;
+		try {
+			number = sc.nextDouble();
+			return number;
+		} catch (Exception e) {
+			System.out.println("Enter the Only Float value ");
+			sc.hasNext();
+			number = sc.nextDouble();
+		}
 		return number;
 	}
 
 	// TO Input the Character
 	public static char inputChar() {
-		char c = sc.next().charAt(0);
+		char c ;
+		try {
+		c = sc.next().charAt(0);
+		return c;
+		}
+		catch (Exception e) {
+			System.out.println("Enter the Flaot value Only");
+			sc.next();
+			c = sc.next().charAt(0);
+		}
 		return c;
 	}
 
@@ -377,7 +417,7 @@ public class Utility {
 			return false;
 		}
 	}
-	
+
 	// To calculate Chenge
 	public static void calculateChenge(int money, int[] note) {
 		int index = 0, totalnotes;
@@ -796,6 +836,8 @@ public class Utility {
 
 	/**************************** Permutation Logic End ***********************/
 
+	/************************ Algorim End **********************/
+
 	/******************************* Data Structure ****************************/
 	// 1. Prime And Anagram in 2D matrix
 	// To Show the prime
@@ -1203,5 +1245,21 @@ public class Utility {
 		return a;
 	}
 
-	
+	public static int findNoOfTree(int node) {
+		int sum = 0;
+
+		if (node <= 1)
+			return 1;
+		else {
+			for (int i = 1; i <= node; i++) {
+				sum = (int) (sum + (findNoOfTree(i - 1) * findNoOfTree(node - i)));
+			}
+		}
+		return sum;
+	}
+
+	/************************** Data Structure End ********************/
+
+	/************************** Object Oriented Program Start *************/
+
 }

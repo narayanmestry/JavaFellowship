@@ -48,6 +48,7 @@ public class UnorderLinkedList<E> {
 		n = new Node<E>();
 		n.setdata(word);
 		n.setNext(start);
+		System.out.println("Start Address : "+start);
 
 		if (start == null) {
 			start = n;

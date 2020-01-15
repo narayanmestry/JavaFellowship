@@ -12,6 +12,7 @@ public class HarmonicFunctionApp {
 	public static void main(String[] args) {
 		float sum = 0 ;
 		int limit;
+		
 		System.out.println("Enter the Limit of the Series : ");
 		limit = Utility.inputNumber();
 		sum=Utility.calculateHarmonic(limit);
